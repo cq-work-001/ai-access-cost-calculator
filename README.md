@@ -4,7 +4,7 @@ A small web tool inspired by my Product Bites post on the growing cost of stayin
 
 This calculator helps visualise the monthly and yearly cost of common paid AI tools, making a simple but important question more tangible:
 
-**What does it cost to “stay in the room”?**
+**What does it cost to "stay in the room"?**
 
 ## Why I built this
 
@@ -13,7 +13,7 @@ In many industries, AI fluency is increasingly treated as a baseline expectation
 This project turns that tension into something visible and interactive.
 
 It was inspired by my Product Bites Spark:
-**EP07 — Product Ethics**
+**EP07 - Product Ethics**
 
 ## Features
 
@@ -29,6 +29,13 @@ It was inspired by my Product Bites Spark:
 - JavaScript
 
 No framework. No backend. Kept intentionally simple.
+
+## How to run
+
+1. Open the project folder.
+2. Open `index.html` in any modern web browser.
+
+You can also use a lightweight local server if you prefer, but it is not required.
 
 ## Goal
 

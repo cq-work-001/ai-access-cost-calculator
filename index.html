@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Access Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="calculator">
+      <header class="hero">
+        <p class="eyebrow">Budgeting Tool</p>
+        <h1>What does it cost to stay in the room?</h1>
+        <p class="subtitle">AI Access Cost Calculator</p>
+        <p class="description">
+          Estimate the cost of common AI tools with a simple monthly and yearly
+          breakdown.
+        </p>
+      </header>
+
+      <section class="card" aria-labelledby="tool-list-title">
+        <div class="section-heading">
+          <h2 id="tool-list-title">Select your tools</h2>
+          <p>Pick any combination to see the total monthly and yearly spend.</p>
+        </div>
+
+        <form class="tool-list" id="tool-form">
+          <label class="tool-option">
+            <input type="checkbox" data-price="20" />
+            <span>ChatGPT Plus</span>
+            <strong>&pound;20/month</strong>
+          </label>
+
+          <label class="tool-option">
+            <input type="checkbox" data-price="20" />
+            <span>Claude Pro</span>
+            <strong>&pound;20/month</strong>
+          </label>
+
+          <label class="tool-option">
+            <input type="checkbox" data-price="10" />
+            <span>GitHub Copilot</span>
+            <strong>&pound;10/month</strong>
+          </label>
+
+          <label class="tool-option">
+            <input type="checkbox" data-price="19" />
+            <span>Gemini Advanced</span>
+            <strong>&pound;19/month</strong>
+          </label>
+
+          <label class="tool-option">
+            <input type="checkbox" data-price="10" />
+            <span>Midjourney</span>
+            <strong>&pound;10/month</strong>
+          </label>
+        </form>
+      </section>
+
+      <section class="card results" aria-live="polite">
+        <div class="result-row">
+          <span>Monthly cost</span>
+          <strong id="monthly-cost">&pound;0</strong>
+        </div>
+
+        <div class="result-row">
+          <span>Yearly cost</span>
+          <strong id="yearly-cost">&pound;0</strong>
+        </div>
+
+        <p class="summary" id="yearly-summary">
+          That&rsquo;s &pound;0 per year to stay in the room.
+        </p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

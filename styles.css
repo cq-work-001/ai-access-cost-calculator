@@ -5,8 +5,8 @@
   --panel-border: #d9d1c3;
   --text: #1f1d1a;
   --muted: #6a6258;
-  --accent: #1d6b57;
-  --accent-soft: #e2f1eb;
+  --accent: #F78534;
+  --accent-soft: #fdefd9;
   --shadow: 0 18px 40px rgba(33, 28, 21, 0.08);
 }
 
@@ -19,16 +19,52 @@ body {
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background:
-    radial-gradient(circle at top, rgba(29, 107, 87, 0.15), transparent 34%),
+    radial-gradient(circle at top, rgba(247, 133, 52, 0.1), transparent 34%),
     linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
   color: var(--text);
 }
+
+/* ─── PAGE HEADER ─────────────────────────────────────────────── */
+
+.page-header {
+  text-align: center;
+  padding: 1.25rem 1rem 0;
+}
+
+.page-header__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.page-header__link:hover .byline {
+  color: var(--text);
+}
+
+.monogram {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.byline {
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+/* ─── LAYOUT ──────────────────────────────────────────────────── */
 
 .calculator {
   width: min(100% - 2rem, 760px);
   margin: 0 auto;
   padding: 3.5rem 0 4rem;
 }
+
+/* ─── HERO ────────────────────────────────────────────────────── */
 
 .hero {
   margin-bottom: 1.75rem;
@@ -55,12 +91,21 @@ h1 {
   line-height: 1.05;
 }
 
+.subtitle {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .description,
 .section-heading p {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.5;
+  margin-bottom: 0;
 }
+
+/* ─── CARDS ───────────────────────────────────────────────────── */
 
 .card {
   background: var(--panel);
@@ -74,14 +119,56 @@ h1 {
   margin-top: 1rem;
 }
 
+/* ─── SECTION HEADING + CURRENCY PILLS ───────────────────────── */
+
 .section-heading {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.section-heading h2 {
+.section-heading__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-bottom: 0.35rem;
+}
+
+.section-heading__top h2 {
+  margin-bottom: 0;
   font-size: 1.2rem;
 }
+
+.currency-pills {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.pill {
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--panel-border);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: inherit;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pill--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ─── TOOL LIST ───────────────────────────────────────────────── */
 
 .tool-list {
   display: grid;
@@ -97,7 +184,6 @@ h1 {
   border: 1px solid var(--panel-border);
   border-radius: 14px;
   background: #fff;
-  cursor: pointer;
   transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
 }
 
@@ -106,19 +192,55 @@ h1 {
   transform: translateY(-1px);
 }
 
-.tool-option input {
+.tool-option--checked {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.tool-check {
   width: 1.1rem;
   height: 1.1rem;
   accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-.tool-option span {
+.tool-name {
   font-weight: 600;
+  cursor: pointer;
+  user-select: none;
 }
 
-.tool-option strong {
+.tool-price {
   color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 1px dashed var(--accent);
+  padding-bottom: 1px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
 }
+
+.tool-price:hover {
+  opacity: 0.75;
+}
+
+.tool-price-input {
+  width: 6rem;
+  padding: 0.2rem 0.4rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 700;
+  text-align: right;
+  color: var(--accent);
+  background: #fff;
+  outline: none;
+}
+
+/* ─── RESULTS ─────────────────────────────────────────────────── */
 
 .results {
   background: linear-gradient(180deg, var(--panel) 0%, var(--accent-soft) 100%);
@@ -140,12 +262,39 @@ h1 {
   font-size: clamp(1.5rem, 4vw, 2.2rem);
 }
 
-.summary {
+.equivalence {
   margin: 1rem 0 0;
   padding-top: 1rem;
   border-top: 1px solid rgba(31, 29, 26, 0.12);
   font-size: 1.05rem;
+  color: var(--accent);
+  font-weight: 600;
+  line-height: 1.45;
 }
+
+/* ─── PAGE FOOTER ─────────────────────────────────────────────── */
+
+.page-footer {
+  text-align: center;
+  padding: 0.5rem 1rem 2.5rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.page-footer p {
+  margin: 0;
+}
+
+.page-footer a {
+  color: var(--muted);
+  text-underline-offset: 2px;
+}
+
+.page-footer a:hover {
+  color: var(--text);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   .calculator {
@@ -161,7 +310,8 @@ h1 {
     grid-template-columns: auto 1fr;
   }
 
-  .tool-option strong {
+  .tool-price,
+  .tool-price-input {
     grid-column: 2;
   }
 

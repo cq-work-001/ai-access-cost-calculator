@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <header class="page-header">
+      <a href="https://clairequest.dev" class="page-header__link">
+        <span class="monogram">CQ</span>
+        <span class="byline">by Claire Quest</span>
+      </a>
+    </header>
+
     <main class="calculator">
       <header class="hero">
         <p class="eyebrow">Budgeting Tool</p>
@@ -20,59 +27,36 @@
 
       <section class="card" aria-labelledby="tool-list-title">
         <div class="section-heading">
-          <h2 id="tool-list-title">Select your tools</h2>
+          <div class="section-heading__top">
+            <h2 id="tool-list-title">Select your tools</h2>
+            <div class="currency-pills" role="group" aria-label="Select currency">
+              <button class="pill" data-currency="GBP" type="button">£ GBP</button>
+              <button class="pill" data-currency="USD" type="button">$ USD</button>
+              <button class="pill" data-currency="EUR" type="button">€ EUR</button>
+            </div>
+          </div>
           <p>Pick any combination to see the total monthly and yearly spend.</p>
         </div>
-
-        <form class="tool-list" id="tool-form">
-          <label class="tool-option">
-            <input type="checkbox" data-price="20" />
-            <span>ChatGPT Plus</span>
-            <strong>&pound;20/month</strong>
-          </label>
-
-          <label class="tool-option">
-            <input type="checkbox" data-price="20" />
-            <span>Claude Pro</span>
-            <strong>&pound;20/month</strong>
-          </label>
-
-          <label class="tool-option">
-            <input type="checkbox" data-price="10" />
-            <span>GitHub Copilot</span>
-            <strong>&pound;10/month</strong>
-          </label>
-
-          <label class="tool-option">
-            <input type="checkbox" data-price="19" />
-            <span>Gemini Advanced</span>
-            <strong>&pound;19/month</strong>
-          </label>
-
-          <label class="tool-option">
-            <input type="checkbox" data-price="10" />
-            <span>Midjourney</span>
-            <strong>&pound;10/month</strong>
-          </label>
-        </form>
+        <form class="tool-list" id="tool-form"></form>
       </section>
 
-      <section class="card results" aria-live="polite">
+      <section class="card results" aria-live="polite" aria-atomic="true">
         <div class="result-row">
           <span>Monthly cost</span>
-          <strong id="monthly-cost">&pound;0</strong>
+          <strong id="monthly-cost">£0</strong>
         </div>
-
         <div class="result-row">
           <span>Yearly cost</span>
-          <strong id="yearly-cost">&pound;0</strong>
+          <strong id="yearly-cost">£0</strong>
         </div>
-
-        <p class="summary" id="yearly-summary">
-          That&rsquo;s &pound;0 per year to stay in the room.
-        </p>
+        <p class="equivalence" id="equivalence" hidden></p>
       </section>
     </main>
+
+    <footer class="page-footer">
+      <p>Part of <a href="https://clairequest.dev/product-bites/sparks">Product Bites</a></p>
+      <p>&copy; <span id="copyright-year"></span> Claire Quest</p>
+    </footer>
 
     <script src="script.js"></script>
   </body>

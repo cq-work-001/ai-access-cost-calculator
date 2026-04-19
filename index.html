@@ -1,63 +1,182 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Access Cost Calculator</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="page-header">
-      <a href="https://clairequest.dev" class="page-header__link">
-        <span class="monogram">CQ</span>
-        <span class="byline">by Claire Quest</span>
-      </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tools.clairequest.dev</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .homepage {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .homepage .hero {
+      margin-bottom: 3rem;
+    }
+
+    .homepage .hero .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .homepage .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .homepage .hero .subtext {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .tool-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .tool-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .tool-card--muted {
+      opacity: 0.85;
+    }
+
+    .tool-card__icon {
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .tool-card__tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 99px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      width: fit-content;
+    }
+
+    .tool-card__tag--muted {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--panel-border);
+    }
+
+    .tool-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .tool-card__desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .tool-card__link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: auto;
+    }
+
+    .tool-card__link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <a href="https://clairequest.dev" class="page-header__link">
+      <span class="monogram">CQ</span>
+      <span class="byline">by Claire Quest</span>
+    </a>
+  </header>
+
+  <main class="homepage">
+    <header class="hero">
+      <p class="eyebrow">tools.clairequest.dev</p>
+      <h1>A small collection of useful things.</h1>
+      <p class="subtext">Built by Claire Quest — practical tools that started as personal problems worth solving.</p>
     </header>
 
-    <main class="calculator">
-      <header class="hero">
-        <p class="eyebrow">Budgeting Tool</p>
-        <h1>What does it cost to stay in the room?</h1>
-        <p class="subtitle">AI Access Cost Calculator</p>
-        <p class="description">
-          Estimate the cost of common AI tools with a simple monthly and yearly
-          breakdown.
-        </p>
-      </header>
+    <div class="tool-grid">
 
-      <section class="card" aria-labelledby="tool-list-title">
-        <div class="section-heading">
-          <div class="section-heading__top">
-            <h2 id="tool-list-title">Select your tools</h2>
-            <div class="currency-pills" role="group" aria-label="Select currency">
-              <button class="pill" data-currency="GBP" type="button">£ GBP</button>
-              <button class="pill" data-currency="USD" type="button">$ USD</button>
-              <button class="pill" data-currency="EUR" type="button">€ EUR</button>
-            </div>
-          </div>
-          <p>Pick any combination to see the total monthly and yearly spend.</p>
-        </div>
-        <form class="tool-list" id="tool-form"></form>
-      </section>
+      <div class="tool-card">
+        <span class="tool-card__icon">🧮</span>
+        <span class="tool-card__tag">Public tool</span>
+        <h2 class="tool-card__title">AI Access Cost Calculator</h2>
+        <p class="tool-card__desc">What does it actually cost to stay in the room? Calculate the real monthly and yearly cost of the AI tools your work depends on.</p>
+        <a class="tool-card__link" href="/calculator">Open calculator →</a>
+      </div>
 
-      <section class="card results" aria-live="polite" aria-atomic="true">
-        <div class="result-row">
-          <span>Monthly cost</span>
-          <strong id="monthly-cost">£0</strong>
-        </div>
-        <div class="result-row">
-          <span>Yearly cost</span>
-          <strong id="yearly-cost">£0</strong>
-        </div>
-        <p class="equivalence" id="equivalence" hidden></p>
-      </section>
-    </main>
+      <div class="tool-card">
+        <span class="tool-card__icon">💎</span>
+        <span class="tool-card__tag">Just for fun</span>
+        <h2 class="tool-card__title">Aria Belle</h2>
+        <p class="tool-card__desc">A Game &amp; Watch tribute. Help Aria Belle climb microphone cables, rescue the bass guitar, and throw gems at everything in her way.</p>
+        <a class="tool-card__link" href="#">Play now →</a>
+      </div>
 
-    <footer class="page-footer">
-      <p>Part of <a href="https://clairequest.dev/product-bites/sparks">Product Bites</a></p>
-      <p>&copy; <span id="copyright-year"></span> Claire Quest</p>
-    </footer>
+      <div class="tool-card tool-card--muted">
+        <span class="tool-card__icon">🔒</span>
+        <span class="tool-card__tag tool-card__tag--muted">Private · Login required</span>
+        <h2 class="tool-card__title">The Ops Room</h2>
+        <p class="tool-card__desc">Private career tools. Job tracker, role evaluator, and whatever comes next.</p>
+        <a class="tool-card__link" href="https://tools.clairequest.dev/career">Sign in →</a>
+      </div>
 
-    <script src="script.js"></script>
-  </body>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>Part of <a href="https://clairequest.dev/product-bites/sparks">Product Bites</a></p>
+    <p>&copy; <span id="copyright-year"></span> Claire Quest</p>
+  </footer>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>

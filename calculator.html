@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Access Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <a href="https://clairequest.dev" class="page-header__link">
+        <span class="monogram">CQ</span>
+        <span class="byline">by Claire Quest</span>
+      </a>
+    </header>
+
+    <main class="calculator">
+      <header class="hero">
+        <p class="eyebrow">Budgeting Tool</p>
+        <h1>What does it cost to stay in the room?</h1>
+        <p class="subtitle">AI Access Cost Calculator</p>
+        <p class="description">
+          Estimate the cost of common AI tools with a simple monthly and yearly
+          breakdown.
+        </p>
+      </header>
+
+      <section class="card" aria-labelledby="tool-list-title">
+        <div class="section-heading">
+          <div class="section-heading__top">
+            <h2 id="tool-list-title">Select your tools</h2>
+            <div class="currency-pills" role="group" aria-label="Select currency">
+              <button class="pill" data-currency="GBP" type="button">£ GBP</button>
+              <button class="pill" data-currency="USD" type="button">$ USD</button>
+              <button class="pill" data-currency="EUR" type="button">€ EUR</button>
+            </div>
+          </div>
+          <p>Pick any combination to see the total monthly and yearly spend.</p>
+        </div>
+        <form class="tool-list" id="tool-form"></form>
+      </section>
+
+      <section class="card results" aria-live="polite" aria-atomic="true">
+        <div class="result-row">
+          <span>Monthly cost</span>
+          <strong id="monthly-cost">£0</strong>
+        </div>
+        <div class="result-row">
+          <span>Yearly cost</span>
+          <strong id="yearly-cost">£0</strong>
+        </div>
+        <p class="equivalence" id="equivalence" hidden></p>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>Part of <a href="https://clairequest.dev/product-bites/sparks">Product Bites</a></p>
+      <p>&copy; <span id="copyright-year"></span> Claire Quest</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
